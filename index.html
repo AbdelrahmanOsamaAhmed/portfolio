@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman Gad | Front-End Engineer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .bento-card {
+            background: #1e293b;
+            border: 1px solid #475569;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: #60a5fa;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        .text-high-vis { color: #f8fafc; }
+        .text-dim-vis { color: #cbd5e1; }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="bg-[#0f172a] text-slate-200 selection:bg-blue-500/30">
+
+<nav class="fixed w-full z-50 glass-nav border-b border-slate-700">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <span class="font-bold text-2xl tracking-tighter text-white">
+            AG<span class="text-blue-500">.</span>
+        </span>
+
+        <div class="hidden md:flex items-center space-x-10 text-sm font-semibold text-dim-vis">
+            <a href="#work" class="hover:text-white transition-colors">EXPERIENCE</a>
+            <a href="#stack" class="hover:text-white transition-colors">TECH STACK</a>
+            <a href="#achievements" class="hover:text-white transition-colors">ACHIEVEMENTS</a>
+            <a href="mailto:abdelrahmanosama910@gmail.com"
+               class="flex items-center h-10 px-6 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-all shadow-lg hover:shadow-blue-500/20">
+               CONTACT ME
+            </a>
+        </div>
+    </div>
+</nav>
+
+<header class="pt-48 pb-24 px-6 relative overflow-hidden">
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
+
+    <div class="max-w-6xl mx-auto text-center md:text-left">
+        <h1 class="text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+            Abdelrahman <br class="hidden md:block">
+            <span class="text-blue-500">Gad</span>
+        </h1>
+
+        <p class="max-w-3xl text-2xl md:text-3xl font-medium text-high-vis mb-10 mx-auto md:mx-0">
+            Front-End Engineer
+        </p>
+
+        <p class="max-w-3xl text-xl text-dim-vis leading-relaxed mb-12 mx-auto md:mx-0">
+            Engineering high-performance applications for the 
+            <span class="text-white font-semibold">UEFA engineering team</span>, 
+            serving 150M+ fans globally. Focused on scalable component architecture and performance optimization.
+        </p>
+
+        <div class="flex flex-wrap gap-8 items-center justify-center md:justify-start">
+            <div class="flex gap-6 text-3xl text-slate-400">
+                <a href="https://linkedin.com/in/abdelrahmanoa" target="_blank" class="hover:text-blue-400 transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/AbdelrahmanOsamaAhmed" target="_blank" class="hover:text-white transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+            <div class="h-8 w-[1px] bg-slate-700 hidden md:block"></div>
+
+            <p class="text-dim-vis font-medium tracking-wide">
+                React • TypeScript • Performance • System Design
+            </p>
+        </div>
+    </div>
+</header>
+
+<section id="work" class="py-24 px-6 bg-slate-900/30" style="scroll-margin-top:100px;">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-xs font-bold tracking-[0.2em] text-blue-500 uppercase mb-16">Selected Impact</h2>
+
+        <div class="grid md:grid-cols-12 gap-6">
+            <div class="md:col-span-8 bento-card rounded-3xl p-10">
+                <div class="mb-6 text-blue-400 text-xs font-bold uppercase tracking-widest">Featured Work • UEFA</div>
+                <h3 class="text-4xl font-bold text-white mb-6">Champions League Draw Live</h3>
+                <p class="text-high-vis text-xl leading-relaxed opacity-90">
+                    Built a real-time broadcast experience handling 
+                    <span class="font-bold text-white">200K+ concurrent users</span> solo. Implemented streaming API integrations for live updates across 220 countries.
+                </p>
+            </div>
+
+            <div class="md:col-span-4 bento-card rounded-3xl p-10 bg-blue-600 border-none flex flex-col justify-center">
+                <h4 class="text-6xl font-extrabold text-white mb-4">70%</h4>
+                <p class="text-blue-100 text-lg font-bold">Reduction in render times through deep performance profiling.</p>
+            </div>
+            
+            <div class="md:col-span-6 bento-card rounded-3xl p-10">
+                <h4 class="text-2xl font-bold text-white mb-4 italic">"Leading Architectural Change"</h4>
+                <p class="text-dim-vis leading-relaxed">
+                    Executing the transition to a unified <span class="text-white">monorepo</span>, improving DX and build efficiency for a global team of 20+ engineers.
+                </p>
+            </div>
+
+            <div class="md:col-span-3 bento-card rounded-3xl p-10 text-center flex flex-col justify-center">
+                <span class="text-4xl font-bold text-white mb-1">150M+</span>
+                <p class="text-blue-400 text-xs font-bold uppercase tracking-widest">Users</p>
+            </div>
+
+            <div class="md:col-span-3 bento-card rounded-3xl p-10 text-center flex flex-col justify-center">
+                <span class="text-4xl font-bold text-white mb-1">220</span>
+                <p class="text-blue-400 text-xs font-bold uppercase tracking-widest">Countries</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="stack" class="py-24 px-6" style="scroll-margin-top:100px;">
+    <div class="max-w-6xl mx-auto text-center md:text-left">
+        <h2 class="text-xs font-bold tracking-[0.2em] text-blue-500 uppercase mb-16">Technical Stack</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 bg-slate-900/50 rounded-2xl border border-slate-800">
+                <h3 class="text-xl font-bold text-white mb-6">Frontend</h3>
+                <p class="text-high-vis mb-2">React / Next.js</p>
+                <p class="text-high-vis mb-2">TypeScript</p>
+                <p class="text-high-vis mb-2">Redux / Zustand</p>
+                <p class="text-high-vis">Tailwind CSS</p>
+            </div>
+            <div class="p-8 bg-slate-900/50 rounded-2xl border border-slate-800">
+                <h3 class="text-xl font-bold text-white mb-6">Engineering</h3>
+                <p class="text-high-vis mb-2">Performance Profiling</p>
+                <p class="text-high-vis mb-2">System Design</p>
+                <p class="text-high-vis mb-2">Accessibility</p>
+                <p class="text-high-vis">Jest / Testing</p>
+            </div>
+            <div class="p-8 bg-slate-900/50 rounded-2xl border border-slate-800">
+                <h3 class="text-xl font-bold text-white mb-6">Backend</h3>
+                <p class="text-high-vis mb-2">Node.js / Express</p>
+                <p class="text-high-vis mb-2">PostgreSQL</p>
+                <p class="text-high-vis mb-2">MongoDB</p>
+                <p class="text-high-vis">CI/CD Pipelines</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="achievements" class="py-24 px-6" style="scroll-margin-top:100px;">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-xs font-bold tracking-[0.2em] text-blue-500 uppercase mb-16">Achievements</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <p class="text-3xl font-extrabold text-white mb-4">ICPC 1st Place (2022)</p>
+                <p class="text-dim-vis text-lg mb-8 tracking-wide">Local Qualifications & Top 10 Regional Finalist (2021).</p>
+                
+                <p class="text-xl font-bold text-white mb-2">Ain Shams University</p>
+                <p class="text-dim-vis">B.Sc. Computer & Systems Engineering</p>
+            </div>
+            <div class="flex flex-col justify-center items-center md:items-end">
+                <div class="text-center md:text-right">
+                    <p class="text-blue-400 font-bold uppercase text-xs tracking-widest mb-2">Grade</p>
+                    <p class="text-white text-3xl font-bold mb-6 italic">Very Good</p>
+                    <p class="text-blue-400 font-bold uppercase text-xs tracking-widest mb-2">GP Project</p>
+                    <p class="text-white text-3xl font-bold italic">Excellent</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="py-32 text-center border-t border-slate-800 px-6">
+    <h2 class="text-5xl font-extrabold text-white mb-10 tracking-tighter">
+        Ready to build something scalable?
+    </h2>
+
+    <a href="mailto:abdelrahmanosama910@gmail.com"
+       class="inline-flex items-center justify-center px-10 py-5 bg-blue-600 text-white text-xl font-bold rounded-full hover:bg-blue-500 transition-all shadow-xl hover:shadow-blue-500/30">
+       CONTACT ME
+    </a>
+
+    <div class="mt-16 flex justify-center gap-8 text-slate-500 text-2xl">
+        <a href="https://linkedin.com/in/abdelrahmanoa" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/AbdelrahmanOsamaAhmed" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+    </div>
+
+    <p class="text-slate-600 text-sm mt-12 font-medium">
+        © 2026 Abdelrahman Gad • High-Performance Front-End
+    </p>
+</footer>
+
+</body>
+</html>
