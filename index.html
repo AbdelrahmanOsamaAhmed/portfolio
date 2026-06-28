@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdelrahman Gad — Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: #e8e6e0;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .nav-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #7eb8f7;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: rgba(232,230,224,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #e8e6e0; }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #7eb8f7;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: #7eb8f7;
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #f0ede6;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-name span { color: #7eb8f7; }
+
+    .hero-title {
+      font-size: 1.1rem;
+      color: rgba(232,230,224,0.55);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: rgba(232,230,224,0.65);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #f0ede6;
+      line-height: 1;
+    }
+
+    .stat-value.accent { color: #7eb8f7; }
+
+    .stat-label {
+      font-size: 11px;
+      color: rgba(232,230,224,0.4);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .stat-divider {
+      width: 0.5px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary { background: #7eb8f7; color: #0a0a0f; }
+    .btn-primary:hover { background: #9ecbfa; }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(232,230,224,0.7);
+      border: 0.5px solid rgba(255,255,255,0.15);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: #e8e6e0;
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(232,230,224,0.3);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; gap: 1rem; }
+
+    .project-card {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(126,184,247,0.25);
+      background: rgba(126,184,247,0.03);
+    }
+
+    .project-card.featured {
+      border-color: rgba(126,184,247,0.2);
+      background: rgba(126,184,247,0.04);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+    }
+
+    .project-org {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #7eb8f7;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #f0ede6;
+      line-height: 1.3;
+    }
+
+    .project-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-live { background: rgba(30,200,120,0.12); color: #4ecda0; border: 0.5px solid rgba(78,205,160,0.25); }
+    .badge-ai   { background: rgba(126,184,247,0.12); color: #7eb8f7; border: 0.5px solid rgba(126,184,247,0.25); }
+    .badge-perf { background: rgba(250,180,80,0.1);   color: #f5b84a; border: 0.5px solid rgba(245,184,74,0.25); }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: rgba(232,230,224,0.55);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .project-metrics { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+    .metric { display: flex; align-items: center; gap: 6px; }
+
+    .metric-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #f0ede6;
+      font-weight: 500;
+    }
+
+    .metric-lbl { font-size: 11px; color: rgba(232,230,224,0.35); }
+
+    .metric-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(126,184,247,0.5);
+      flex-shrink: 0;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .skill-group {
+      background: rgba(255,255,255,0.02);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+    }
+
+    .skill-group-name {
+      font-size: 11px;
+      color: rgba(232,230,224,0.35);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .skill-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(232,230,224,0.7);
+      background: rgba(255,255,255,0.05);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.25rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 28px;
+    }
+
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7eb8f7;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .timeline-dot.muted { background: rgba(255,255,255,0.15); }
+
+    .timeline-line {
+      width: 0.5px;
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      margin-top: 6px;
+    }
+
+    .timeline-content { flex: 1; }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(232,230,224,0.3);
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-role {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #f0ede6;
+      margin-bottom: 2px;
+    }
+
+    .timeline-org { font-size: 0.85rem; color: #7eb8f7; margin-bottom: 0.5rem; }
+
+    .timeline-notes {
+      font-size: 0.82rem;
+      color: rgba(232,230,224,0.45);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      text-decoration: none;
+      color: rgba(232,230,224,0.7);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(126,184,247,0.35);
+      color: #e8e6e0;
+      background: rgba(126,184,247,0.05);
+    }
+
+    .contact-link i { font-size: 15px; color: #7eb8f7; }
+
+    /* FOOTER */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(232,230,224,0.2);
+      letter-spacing: 0.04em;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .section { padding: 2.5rem 1.25rem; }
+      .hero-stats { gap: 1.25rem; }
+      .stat-divider { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">AG_</span>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Full-Stack Developer · Cairo, Egypt</div>
+    <h1 class="hero-name">Abdelrahman <span>Gad</span></h1>
+    <p class="hero-title">Production React · Systems thinking · Agentic AI workflows</p>
+    <p class="hero-desc">
+      I build frontend systems that hold under pressure — UEFA Champions League draws, 200K concurrent users, zero downtime. I work at the intersection of frontend craft, backend pragmatism, and emerging AI-assisted development.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value accent">200K+</span>
+        <span class="stat-label">Concurrent users</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Downtime incidents</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value">3+</span>
+        <span class="stat-label">Years at UEFA scale</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value accent">1st</span>
+        <span class="stat-label">ICPC local qualifier</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#work">View my work</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="section-label">Selected work</div>
+    <div class="projects-grid">
+
+      <div class="project-card featured">
+        <div class="project-header">
+          <div>
+            <div class="project-org">UEFA · Champions League</div>
+            <div class="project-name">Champions League Draw — Live Page</div>
+          </div>
+          <span class="project-badge badge-live">Production · Live</span>
+        </div>
+        <p class="project-desc">
+          Solo-built the live draw experience for the UEFA Champions League — one of football's most-watched real-time digital moments. Engineered for peak load with zero tolerance for failure. Delivered in under a month, from design handoff to production.
+        </p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">200K+</span><span class="metric-lbl">concurrent users</span></div>
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">0 incidents</span><span class="metric-lbl">zero downtime</span></div>
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">&lt;1 month</span><span class="metric-lbl">solo delivery</span></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-org">UEFA · Core Platform</div>
+            <div class="project-name">UEFA.com Performance Overhaul</div>
+          </div>
+          <span class="project-badge badge-perf">Performance</span>
+        </div>
+        <p class="project-desc">
+          Identified and resolved critical rendering bottlenecks in a high-traffic React application. Achieved significant reduction in render times and memory usage across a core UEFA.com page — improvements visible at scale for millions of monthly visitors.
+        </p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">Render time</span><span class="metric-lbl">significantly reduced</span></div>
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">Memory usage</span><span class="metric-lbl">optimized at scale</span></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-org">Internal · Workflow Innovation</div>
+            <div class="project-name">Agentic AI Development Workflow</div>
+          </div>
+          <span class="project-badge badge-ai">AI · Tooling</span>
+        </div>
+        <p class="project-desc">
+          Pioneered an agentic coding workflow using Cursor and Claude to orchestrate a large monorepo migration — reviewing and directing AI output rather than writing code manually. Presented the approach to the Tech Lead as a model for team adoption.
+        </p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">Monorepo</span><span class="metric-lbl">migration scope</span></div>
+          <div class="metric"><div class="metric-dot"></div><span class="metric-val">Team-adopted</span><span class="metric-lbl">workflow presented to TL</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-label">Technical skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-name">Frontend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Redux</span>
+          <span class="skill-tag">RTL</span>
+          <span class="skill-tag">CSS-in-JS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Performance</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Profiling</span>
+          <span class="skill-tag">Memoization</span>
+          <span class="skill-tag">Code splitting</span>
+          <span class="skill-tag">Bundle size</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">AI & tooling</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Cursor</span>
+          <span class="skill-tag">Claude API</span>
+          <span class="skill-tag">Agentic flows</span>
+          <span class="skill-tag">Prompt eng.</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Algorithms</span>
+          <span class="skill-tag">ICPC</span>
+          <span class="skill-tag">Data structures</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">DevOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-label">Experience & education</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">Aug 2023 — Present</div>
+          <div class="timeline-role">Full-Stack Developer</div>
+          <div class="timeline-org">Atos, embedded @ UEFA</div>
+          <div class="timeline-notes">Production React development for UEFA.com and Champions League digital products. Solo ownership of high-stakes live features used by millions globally.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot muted"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">Apr 2023 — Jul 2023</div>
+          <div class="timeline-role">Software Engineering Intern</div>
+          <div class="timeline-org">Atos</div>
+          <div class="timeline-notes">Internship that led directly to a full-time offer and UEFA placement. Full-stack exposure across frontend and backend systems.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot muted"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">2019 — 2023</div>
+          <div class="timeline-role">B.Sc. Computer & Systems Engineering</div>
+          <div class="timeline-org">Ain Shams University</div>
+          <div class="timeline-notes">Very Good grade · Excellent graduation project · 1st place ICPC local qualifications 2022 · ECPC qualifier.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-label">Get in touch</div>
+    <div class="contact-row">
+      <a class="contact-link" href="mailto:your@email.com">
+        <i class="ti ti-mail"></i>
+        Email
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">
+        <i class="ti ti-brand-linkedin"></i>
+        LinkedIn
+      </a>
+      <a class="contact-link" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">
+        <i class="ti ti-brand-github"></i>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-note">Abdelrahman Gad · Full-Stack Developer · Cairo</span>
+    <span class="footer-note">Open to remote opportunities</span>
+  </footer>
+
+</body>
+</html>
